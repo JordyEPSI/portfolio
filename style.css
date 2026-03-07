@@ -193,3 +193,16 @@ transition:all 0.8s ease;
 opacity:1;
 transform:translateY(0);
 }
+
+/* TIMELINE ANIMATION */
+
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s ease;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateX(0);
+}
