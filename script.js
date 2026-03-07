@@ -1,108 +1,84 @@
-document.addEventListener("DOMContentLoaded", () => {
+// MENU BURGER
 
-    const burger = document.querySelector("#burger");
-    const nav = document.querySelector("#nav-links");
-    const navLinks = document.querySelectorAll(".nav-links li");
+const burger = document.querySelector("#burger")
+const nav = document.querySelector("#nav-links")
 
-    // BURGER MENU
-    burger.addEventListener("click", () => {
+burger.addEventListener("click", () => {
 
-        nav.classList.toggle("nav-active");
-        burger.classList.toggle("toggle");
+nav.classList.toggle("nav-active")
 
-        navLinks.forEach((link, index) => {
+burger.classList.toggle("toggle")
 
-            if(link.style.animation){
-                link.style.animation = "";
-            } else{
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
-
-        });
-
-    });
+})
 
 
-    // FERMER MENU AU CLICK
-    navLinks.forEach(link => {
+// NAVBAR SHADOW
 
-        link.addEventListener("click", () => {
+window.addEventListener("scroll", () => {
 
-            nav.classList.remove("nav-active");
-            burger.classList.remove("toggle");
+const navbar = document.querySelector(".navbar")
 
-            navLinks.forEach(link=>{
-                link.style.animation="";
-            })
+if(window.scrollY > 40){
 
-        });
+navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)"
 
-    });
+}else{
 
+navbar.style.boxShadow = "none"
 
-    // SCROLL REVEAL
-    const observer = new IntersectionObserver(entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },{
-        threshold:0.15
-    });
-
-    document.querySelectorAll("section").forEach(section => {
-
-        section.classList.add("hidden");
-        observer.observe(section);
-
-    });
-
-});
-
-
-// ANIMATION NAV LINKS
-const style = document.createElement("style");
-
-style.innerHTML = `
-@keyframes navLinkFade{
-from{
-opacity:0;
-transform:translateX(50px);
 }
-to{
-opacity:1;
-transform:translateX(0);
+
+})
+
+
+// TIMELINE ANIMATION
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show")
+
 }
-}
-`;
 
-document.head.appendChild(style);
-
-// ANIMATION TIMELINE
-
-const timelineObserver = new IntersectionObserver(entries => {
-
-   entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-         entry.target.classList.add("show")
-
-      }
-
-   })
+})
 
 })
 
 document.querySelectorAll(".timeline-item").forEach(item => {
 
-   timelineObserver.observe(item)
+observer.observe(item)
+
+})
+
+
+// SCROLL REVEAL SECTIONS
+
+const sections = document.querySelectorAll("section")
+
+const revealObserver = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity = "1"
+entry.target.style.transform = "translateY(0)"
+
+}
+
+})
+
+})
+
+sections.forEach(section => {
+
+section.style.opacity = "0"
+section.style.transform = "translateY(40px)"
+section.style.transition = "all 0.8s ease"
+
+revealObserver.observe(section)
 
 })
