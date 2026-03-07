@@ -206,3 +206,33 @@ transform:translateY(0);
     opacity: 1;
     transform: translateX(0);
 }
+
+/* CARD */
+
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(120deg, transparent, rgba(56,189,248,0.2), transparent);
+    opacity:0;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform: translateY(-10px) scale(1.03);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+}
+
+.card:hover::before{
+    opacity:1;
+}
