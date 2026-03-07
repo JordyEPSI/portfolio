@@ -3,138 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Rahantanirina Anjara Jordy</title>
+    <title>Anjara Jordy RAHANTANIRINA | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <header>
-    <nav>
-        <h2>AnjaraRTA.dev</h2>
-        <ul>
+    <nav class="navbar">
+        <div class="logo">Anjara<span>RTA</span></div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#about">À propos</a></li>
             <li><a href="#skills">Compétences</a></li>
-            <li><a href="#projects">Expériences</a></li>
+            <li><a href="#projects">Projets</a></li>
             <li><a href="#timeline">Parcours</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>Anjara <span class="highlight">RAHANTANIRINA</span></h1>
-    <h3>Étudiant en Bachelor Informatique & Développeur Web</h3>
-    <div class="buttons">
-        <a href="CV_Jordy.pdf" class="btn" target="_blank">Télécharger mon CV</a>
-        <a href="https://github.com/JordyEPSI" class="btn outline">GitHub</a>
-    </div>
-</section>
-
-<section id="about">
-    <h2>À propos</h2>
-    <div class="about-container">
-        <img src="Jordy.jpg" alt="Anjara Jordy" class="profile">
-        <div class="about-text">
-            <p><strong>Actuellement en 1ère année de Bachelor à l'EPSI Montpellier.</strong></p>
-            <p>Passionné par l'informatique et les nouvelles technologies, je suis à la recherche d'un <strong>stage de 8 semaines</strong> en tant que développeur web (du 20 avril au 12 juin 2026).</p>
-            <p>Savoir-être : Organisé, ponctuel, curieux et doté d'un bon esprit d'équipe.</p>
-        </div>
-    </div>
-</section>
-
-<section id="skills">
-    <h2>Compétences Techniques</h2>
-    <div class="skills-grid">
-        <div class="skill-category">
-            <h4>Front-end</h4>
-            <div class="skills-list">
-                <div class="skill-item"><i class="devicon-html5-plain colored"></i> HTML5</div>
-                <div class="skill-item"><i class="devicon-css3-plain colored"></i> CSS3</div>
-                <div class="skill-item"><i class="devicon-python-plain colored"></i> Python</div>
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Anjara <span class="highlight">RAHANTANIRINA</span></h1>
+            <h3>Étudiant en Bachelor Informatique & Développeur Web</h3>
+            <p>Recherche de stage : 20 Avril — 12 Juin 2026</p>
+            <div class="buttons">
+                <a href="CV_Anjara.pdf" class="btn primary" target="_blank">Télécharger mon CV</a>
+                <a href="https://github.com/JordyEPSI" class="btn secondary">GitHub</a>
             </div>
         </div>
-        <div class="skill-category">
-            <h4>Back-end & Outils</h4>
-            <div class="skills-list">
-                <div class="skill-item"><i class="devicon-php-plain colored"></i> PHP</div>
-                <div class="skill-item"><i class="devicon-git-plain colored"></i> Git</div>
-                <div class="skill-item"><i class="devicon-linux-plain"></i> Linux</div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">À propos</h2>
+        <div class="about-grid">
+            <div class="about-img">
+                <img src="Jordy.jpg" alt="Anjara Jordy" class="profile-pic">
+            </div>
+            <div class="about-text">
+                <p>Étudiant en <strong>première année bachelor à l'EPSI</strong>. Passionné par le développement, je cherche à mettre mes compétences au service d'une équipe dynamique pour un stage de 8 semaines du 20 Avril au 12 Juin 2026.</p>
+                <h4>Savoir-être</h4>
+                <div class="tags">
+                    <span class="tag">Adaptation</span>
+                    <span class="tag">Organisation</span>
+                    <span class="tag">Ponctualité</span>
+                    <span class="tag">Curiosité</span>
+                    <span class="tag">Esprit d'équipe</span>
+                </div>
             </div>
         </div>
-        <div class="skill-category">
-            <h4>Bases de données</h4>
-            <div class="skills-list">
-                <div class="skill-item"><i class="devicon-mysql-plain colored"></i> MySQL</div>
-                <div class="skill-item"><i class="devicon-mariadb-original colored"></i> MariaDB</div>
+    </section>
+
+    <section id="skills" class="container">
+        <h2 class="section-title">Compétences techniques</h2>
+        <div class="skills-wrapper">
+            <div class="skill-box">
+                <h4>Front-end</h4>
+                <div class="icons-list">
+                    <div class="icon-item"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                    <div class="icon-item"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                    <div class="icon-item"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Back-end</h4>
+                <div class="icons-list">
+                    <div class="icon-item"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+                    <div class="icon-item"><i class="devicon-linux-plain"></i><span>Linux</span></div>
+                    <div class="icon-item"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                </div>
+            </div>
+            <div class="skill-box">
+                <h4>Systèmes & Données</h4>
+                <div class="icons-list">
+                    <div class="icon-item"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                    <div class="icon-item"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                    <div class="icon-item"><i class="devicon-wordpress-plain"></i><span>WordPress</span></div>
+                </div>
             </div>
         </div>
-        <div class="skill-category">
-            <h4>Systèmes & CMS</h4>
-            <div class="skills-list">
-                <div class="skill-item"><i class="devicon-docker-plain colored"></i> Docker</div>
-                <div class="skill-item"><i class="devicon-wordpress-plain"></i> WordPress</div>
-                <div class="skill-item"><i class="devicon-vmware-plain colored"></i> VMware</div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2 class="section-title">Expériences & Projets</h2>
+        <div class="projects-grid">
+            <div class="card">
+                <span class="project-tag">Workshop</span>
+                <h3>2e National Workshop EPSI</h3>
+                <p>Distinction lors du challenge national inter-écoles.</p>
+            </div>
+            <div class="card">
+                <span class="project-tag">Stage</span>
+                <h3>Ela Innovation</h3>
+                <p>Conception de beacons et capteurs Bluetooth.</p>
+            </div>
+            <div class="card">
+                <span class="project-tag">Web</span>
+                <h3>Site Vitrine Pain Brut</h3>
+                <p>Développement complet d'un site pour une boulangerie artisanale.</p>
+            </div>
+            <div class="card">
+                <span class="project-tag">Docker</span>
+                <h3>Gestion Hôtelière</h3>
+                <p>Mise en place d'une infrastructure conteneurisée pour un hôtel.</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="projects">
-    <h2>Expériences & Projets</h2>
-    <div class="projects">
-        <div class="card">
-            <span class="tag">Workshop</span>
-            <h3>2e National EPSI</h3>
-            <p>Participation et réussite au workshop national de l'EPSI.</p>
+    <section id="timeline" class="container">
+        <h2 class="section-title">Parcours</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-date">2025 - 2028</div>
+                <div class="time-content">
+                    <h4>Bachelor Informatique</h4>
+                    <p>EPSI Montpellier</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-date">2023 - 2024</div>
+                <div class="time-content">
+                    <h4>Développeur Web et Web Mobile</h4>
+                    <p>Adrar Montpellier</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-date">2015 - 2018</div>
+                <div class="time-content">
+                    <h4>BAC Pro SEN</h4>
+                    <p>Lycée J.F. Champollion</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <span class="tag">Stage</span>
-            <h3>Ela Innovation</h3>
-            <p>Conception de beacons et capteurs Bluetooth.</p>
-        </div>
-        <div class="card">
-            <span class="tag">Web</span>
-            <h3>Pain Brut</h3>
-            <p>Création complète d'un site vitrine pour l'enseigne Pain Brut.</p>
-        </div>
-        <div class="card">
-            <span class="tag">Docker</span>
-            <h3>Gestion Hôtelière</h3>
-            <p>Mise en place d'un projet de gestion d'hôtellerie via Docker.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="timeline">
-    <h2>Parcours</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <h4>2025 - 2028</h4>
-            <p><strong>Bachelor Informatique</strong> - EPSI Montpellier </p>
+    <section id="languages" class="container">
+        <h2 class="section-title">Langues</h2>
+        <div class="lang-grid">
+            <div class="lang-card"><strong>Malgache</strong><p>Maternel</p></div>
+            <div class="lang-card"><strong>Anglais</strong><p>Niveau B1</p></div>
+            <div class="lang-card"><strong>Espagnol</strong><p>Scolaire</p></div>
         </div>
-        <div class="timeline-item">
-            <h4>2023 - 2024</h4>
-            <p><strong>Titre Développeur Web et Web Mobile</strong> - Adrar Montpellier </p>
-        </div>
-        <div class="timeline-item">
-            <h4>2015 - 2018</h4>
-            <p><strong>Bac Pro SEN</strong> (Système Électronique Numérique) - Lycée J.F. Champollion </p>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <div class="contact-info">
+<footer id="contact">
+    <div class="container footer-content">
         <p>📍 Montpellier, France</p>
         <p>📧 <a href="mailto:jordygael34@yahoo.fr">jordygael34@yahoo.fr</a></p>
         <p>📞 07 87 87 71 52</p>
+        <hr>
+        <p>© 2026 | Anjara Jordy RAHANTANIRINA</p>
     </div>
-</section>
-
-<footer>
-    <p>Anjara Jordy RAHANTANIRINA | Portfolio © 2026</p>
 </footer>
 
 <script src="script.js"></script>
