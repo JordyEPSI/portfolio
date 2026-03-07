@@ -6,7 +6,7 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family: "Poppins", sans-serif;
+font-family:"Poppins",sans-serif;
 background:#0f172a;
 color:white;
 line-height:1.6;
@@ -18,8 +18,10 @@ line-height:1.6;
 width:90%;
 max-width:1200px;
 margin:auto;
-padding:80px 0;
+padding:100px 0;
 }
+
+/* TITRES */
 
 .section-title{
 text-align:center;
@@ -48,6 +50,7 @@ background:#020617;
 position:sticky;
 top:0;
 z-index:1000;
+transition:0.3s;
 }
 
 .logo{
@@ -93,37 +96,68 @@ transition:0.3s;
 /* HERO */
 
 .hero{
-height:90vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 position:relative;
 overflow:hidden;
+padding:120px 20px;
 }
+
+.hero-content{
+max-width:900px;
+margin:auto;
+z-index:2;
+}
+
+.hero h1{
+font-size:4rem;
+margin-bottom:10px;
+}
+
+.hero h3{
+font-size:1.6rem;
+font-weight:400;
+margin-bottom:15px;
+color:#cbd5f5;
+}
+
+.hero p{
+font-size:1.1rem;
+margin-bottom:25px;
+color:#94a3b8;
+}
+
+.highlight{
+color:#38bdf8;
+}
+
+/* HERO GLOW */
 
 .hero::before{
 content:"";
 position:absolute;
-width:600px;
-height:600px;
+width:900px;
+height:900px;
 background:radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%);
-top:-150px;
-left:-100px;
-filter:blur(120px);
-animation:glowMove 10s infinite alternate;
+top:-200px;
+left:-200px;
+filter:blur(140px);
+animation:glowMove 12s infinite alternate;
 }
 
 .hero::after{
 content:"";
 position:absolute;
-width:500px;
-height:500px;
-background:radial-gradient(circle, rgba(56,189,248,0.2), transparent 70%);
-bottom:-150px;
-right:-100px;
-filter:blur(120px);
-animation:glowMove 12s infinite alternate-reverse;
+width:800px;
+height:800px;
+background:radial-gradient(circle, rgba(56,189,248,0.25), transparent 70%);
+bottom:-200px;
+right:-200px;
+filter:blur(140px);
+animation:glowMove 14s infinite alternate-reverse;
 }
 
 @keyframes glowMove{
@@ -131,15 +165,11 @@ from{transform:translate(0,0)}
 to{transform:translate(80px,60px)}
 }
 
-.highlight{
-color:#38bdf8;
-}
+/* BUTTONS */
 
 .buttons{
 margin-top:20px;
 }
-
-/* BUTTONS */
 
 .btn{
 display:inline-block;
@@ -350,6 +380,14 @@ text-align:center;
 
 .profile-pic{
 margin:auto;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero h3{
+font-size:1.2rem;
 }
 
 }
