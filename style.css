@@ -15,10 +15,10 @@ line-height:1.6;
 /* CONTAINER */
 
 .container{
-width:90%;
-max-width:1200px;
+width:92%;
+max-width:1400px;
 margin:auto;
-padding:100px 0;
+padding:120px 0;
 }
 
 /* TITRES */
@@ -45,7 +45,7 @@ margin:10px auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 8%;
+padding:20px 10%;
 background:#020617;
 position:sticky;
 top:0;
@@ -103,7 +103,7 @@ justify-content:center;
 text-align:center;
 position:relative;
 overflow:hidden;
-padding:120px 20px;
+padding:120px 10%;
 }
 
 .hero-content{
@@ -119,14 +119,12 @@ margin-bottom:10px;
 
 .hero h3{
 font-size:1.6rem;
-font-weight:400;
-margin-bottom:15px;
+margin-bottom:10px;
 color:#cbd5f5;
 }
 
 .hero p{
-font-size:1.1rem;
-margin-bottom:25px;
+font-size:1.2rem;
 color:#94a3b8;
 }
 
@@ -272,7 +270,8 @@ gap:25px;
 
 .card{
 background:#1e293b;
-padding:25px;
+font-size:1.05rem;
+padding:35px;
 border-radius:12px;
 transition:0.3s;
 position:relative;
@@ -391,3 +390,4 @@ font-size:1.2rem;
 }
 
 }
+
