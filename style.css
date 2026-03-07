@@ -202,6 +202,58 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* Amélioration des compétences avec logos */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.skill-category h4 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1e293b;
+    padding-bottom: 5px;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.skill-item i {
+    font-size: 1.5rem; /* Taille du logo */
+}
+
+/* Style des tags sur les cartes projets */
+.tag {
+    background: #38bdf8;
+    color: #020617;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.highlight {
+    color: #38bdf8;
+}
+
+.outline {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+}
+
 /* RESPONSIVE */
 
 @media(max-width:900px){
@@ -250,3 +302,4 @@ justify-content:center;
 }
 
 }
+
