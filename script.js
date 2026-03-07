@@ -1,63 +1,86 @@
-// Gestion du Menu Burger
-const navSlide = () => {
-    const burger = document.querySelector('#burger');
-    const nav = document.querySelector('#nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
+document.addEventListener("DOMContentLoaded", () => {
 
-    burger.addEventListener('click', () => {
-        // Toggle Menu
-        nav.classList.toggle('nav-active');
+    const burger = document.querySelector("#burger");
+    const nav = document.querySelector("#nav-links");
+    const navLinks = document.querySelectorAll(".nav-links li");
 
-        // Animation des liens (fade in)
+    // BURGER MENU
+    burger.addEventListener("click", () => {
+
+        nav.classList.toggle("nav-active");
+        burger.classList.toggle("toggle");
+
         navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
+
+            if(link.style.animation){
+                link.style.animation = "";
+            } else{
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
+
         });
 
-        // Animation du burger en "X"
-        burger.classList.toggle('toggle');
     });
 
-    // Fermeture automatique du menu au clic sur un lien (utile sur mobile)
+
+    // FERMER MENU AU CLICK
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
+
+        link.addEventListener("click", () => {
+
+            nav.classList.remove("nav-active");
+            burger.classList.remove("toggle");
+
+            navLinks.forEach(link=>{
+                link.style.animation="";
+            })
+
         });
+
     });
-}
 
-// Keyframes injectés via JS pour l'animation des liens
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes navLinkFade {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0px); }
-}`;
-document.head.appendChild(style);
 
-navSlide();
+    // SCROLL REVEAL
+    const observer = new IntersectionObserver(entries => {
 
-// Optionnel : Scroll Reveal (Apparition des sections au défilement)
-const observerOptions = {
-    threshold: 0.1
-};
+        entries.forEach(entry => {
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },{
+        threshold:0.15
     });
-}, observerOptions);
 
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = "0";
-    section.style.transform = "translateY(20px)";
-    section.style.transition = "all 0.6s ease-out";
-    observer.observe(section);
+    document.querySelectorAll("section").forEach(section => {
+
+        section.classList.add("hidden");
+        observer.observe(section);
+
+    });
+
 });
+
+
+// ANIMATION NAV LINKS
+const style = document.createElement("style");
+
+style.innerHTML = `
+@keyframes navLinkFade{
+from{
+opacity:0;
+transform:translateX(50px);
+}
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+`;
+
+document.head.appendChild(style);
