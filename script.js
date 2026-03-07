@@ -1,24 +1,29 @@
+// SCROLL SMOOTH
 
-window.addEventListener("load",()=>{
+const links = document.querySelectorAll("nav a")
 
-document.getElementById("loader").style.display="none"
+links.forEach(link=>{
+
+link.addEventListener("click",e=>{
+
+e.preventDefault()
+
+const target = document.querySelector(link.getAttribute("href"))
+
+target.scrollIntoView({
+behavior:"smooth"
+})
+
+})
 
 })
 
 
-const cursor=document.querySelector(".cursor")
+// ANIMATION AU SCROLL
 
-document.addEventListener("mousemove",(e)=>{
+const observer = new IntersectionObserver(entries => {
 
-cursor.style.top=e.clientY+"px"
-cursor.style.left=e.clientX+"px"
-
-})
-
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
+entries.forEach(entry => {
 
 if(entry.isIntersecting){
 
@@ -30,9 +35,28 @@ entry.target.classList.add("active")
 
 })
 
+document.querySelectorAll("section").forEach(section => {
 
-document.querySelectorAll(".reveal").forEach(el=>{
+section.classList.add("reveal")
+observer.observe(section)
 
-observer.observe(el)
+})
+
+
+// NAVBAR SHADOW AU SCROLL
+
+window.addEventListener("scroll",()=>{
+
+const header = document.querySelector("header")
+
+if(window.scrollY > 50){
+
+header.style.boxShadow="0 10px 30px rgba(0,0,0,0.4)"
+
+}else{
+
+header.style.boxShadow="none"
+
+}
 
 })
