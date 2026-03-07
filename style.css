@@ -144,3 +144,16 @@ hr { border: none; border-top: 1px solid #1e293b; margin: 30px auto; width: 50%;
 .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
 .toggle .line2 { opacity: 0; }
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* SCROLL ANIMATION */
+
+.hidden{
+opacity:0;
+transform:translateY(30px);
+transition:all 0.8s ease;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
