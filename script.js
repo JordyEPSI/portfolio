@@ -84,3 +84,25 @@ transform:translateX(0);
 `;
 
 document.head.appendChild(style);
+
+// ANIMATION TIMELINE
+
+const timelineObserver = new IntersectionObserver(entries => {
+
+   entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+         entry.target.classList.add("show")
+
+      }
+
+   })
+
+})
+
+document.querySelectorAll(".timeline-item").forEach(item => {
+
+   timelineObserver.observe(item)
+
+})
