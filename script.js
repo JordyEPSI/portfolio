@@ -1,62 +1,39 @@
-/**
- * GESTION DU MENU BURGER
- */
 const navSlide = () => {
     const burger = document.querySelector('#burger');
     const nav = document.querySelector('#nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
-    // Fonction pour basculer le menu
     const toggleMenu = () => {
         nav.classList.toggle('nav-active');
         burger.classList.toggle('toggle');
-
-        // Animation des liens
         navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+            link.style.animation ? link.style.animation = '' : link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
         });
     };
 
     burger.addEventListener('click', toggleMenu);
-
-    // Fermeture automatique au clic sur un lien (mobile)
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (nav.classList.contains('nav-active')) {
-                toggleMenu();
-            }
-        });
-    });
+    navLinks.forEach(link => link.addEventListener('click', () => {
+        if (nav.classList.contains('nav-active')) toggleMenu();
+    }));
 }
 
-/**
- * SCROLL REVEAL (Apparition au défilement)
- */
 const initScrollReveal = () => {
-    const observerOptions = {
-        threshold: 0.15
-    };
-
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
         });
-    }, observerOptions);
+    }, { threshold: 0.15 });
 
-    // On applique l'observateur à chaque section
     document.querySelectorAll('section').forEach(section => {
         section.classList.add('reveal-hidden');
         observer.observe(section);
     });
 };
 
-// Lancement des fonctions au chargement du DOM
+const style = document.createElement('style');
+style.innerHTML = `@keyframes navLinkFade { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0px); } }`;
+document.head.appendChild(style);
+
 document.addEventListener('DOMContentLoaded', () => {
     navSlide();
     initScrollReveal();
