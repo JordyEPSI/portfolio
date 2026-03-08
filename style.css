@@ -144,3 +144,57 @@ hr { border: none; border-top: 1px solid #1e293b; margin: 30px auto; width: 50%;
 .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
 .toggle .line2 { opacity: 0; }
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* Mise en avant du Workshop */
+.card.featured {
+    grid-column: 1 / -1; /* Prend toute la largeur sur écran large */
+    border: 1px solid var(--primary);
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rank {
+    background: #fbbf24;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.workshop-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.tech-pills span {
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+/* Correction icônes manuelles */
+.icon-item i.fas {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
