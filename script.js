@@ -1,84 +1,63 @@
-// MENU BURGER
+// Gestion du Menu Burger
+const navSlide = () => {
+    const burger = document.querySelector('#burger');
+    const nav = document.querySelector('#nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
 
-const burger = document.querySelector("#burger")
-const nav = document.querySelector("#nav-links")
+    burger.addEventListener('click', () => {
+        // Toggle Menu
+        nav.classList.toggle('nav-active');
 
-burger.addEventListener("click", () => {
+        // Animation des liens (fade in)
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
 
-nav.classList.toggle("nav-active")
+        // Animation du burger en "X"
+        burger.classList.toggle('toggle');
+    });
 
-burger.classList.toggle("toggle")
-
-})
-
-
-// NAVBAR SHADOW
-
-window.addEventListener("scroll", () => {
-
-const navbar = document.querySelector(".navbar")
-
-if(window.scrollY > 40){
-
-navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.5)"
-
-}else{
-
-navbar.style.boxShadow = "none"
-
+    // Fermeture automatique du menu au clic sur un lien (utile sur mobile)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+        });
+    });
 }
 
-})
+// Keyframes injectés via JS pour l'animation des liens
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes navLinkFade {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0px); }
+}`;
+document.head.appendChild(style);
 
+navSlide();
 
-// TIMELINE ANIMATION
+// Optionnel : Scroll Reveal (Apparition des sections au défilement)
+const observerOptions = {
+    threshold: 0.1
+};
 
-const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, observerOptions);
 
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show")
-
-}
-
-})
-
-})
-
-document.querySelectorAll(".timeline-item").forEach(item => {
-
-observer.observe(item)
-
-})
-
-
-// SCROLL REVEAL SECTIONS
-
-const sections = document.querySelectorAll("section")
-
-const revealObserver = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity = "1"
-entry.target.style.transform = "translateY(0)"
-
-}
-
-})
-
-})
-
-sections.forEach(section => {
-
-section.style.opacity = "0"
-section.style.transform = "translateY(40px)"
-section.style.transition = "all 0.8s ease"
-
-revealObserver.observe(section)
-
-})
+document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(20px)";
+    section.style.transition = "all 0.6s ease-out";
+    observer.observe(section);
+});
