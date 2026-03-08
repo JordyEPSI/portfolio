@@ -1,14 +1,17 @@
-// Gestion du Menu Burger
+/**
+ * GESTION DU MENU BURGER
+ */
 const navSlide = () => {
     const burger = document.querySelector('#burger');
     const nav = document.querySelector('#nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
-    burger.addEventListener('click', () => {
-        // Toggle Menu
+    // Fonction pour basculer le menu
+    const toggleMenu = () => {
         nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
 
-        // Animation des liens (fade in)
+        // Animation des liens
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = '';
@@ -16,48 +19,45 @@ const navSlide = () => {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
+    };
 
-        // Animation du burger en "X"
-        burger.classList.toggle('toggle');
-    });
+    burger.addEventListener('click', toggleMenu);
 
-    // Fermeture automatique du menu au clic sur un lien (utile sur mobile)
+    // Fermeture automatique au clic sur un lien (mobile)
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
+            if (nav.classList.contains('nav-active')) {
+                toggleMenu();
+            }
         });
     });
 }
 
-// Keyframes injectés via JS pour l'animation des liens
-const style = document.createElement('style');
-style.innerHTML = `
-@keyframes navLinkFade {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0px); }
-}`;
-document.head.appendChild(style);
+/**
+ * SCROLL REVEAL (Apparition au défilement)
+ */
+const initScrollReveal = () => {
+    const observerOptions = {
+        threshold: 0.15
+    };
 
-navSlide();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+            }
+        });
+    }, observerOptions);
 
-// Optionnel : Scroll Reveal (Apparition des sections au défilement)
-const observerOptions = {
-    threshold: 0.1
+    // On applique l'observateur à chaque section
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('reveal-hidden');
+        observer.observe(section);
+    });
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = "0";
-    section.style.transform = "translateY(20px)";
-    section.style.transition = "all 0.6s ease-out";
-    observer.observe(section);
+// Lancement des fonctions au chargement du DOM
+document.addEventListener('DOMContentLoaded', () => {
+    navSlide();
+    initScrollReveal();
 });
