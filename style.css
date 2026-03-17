@@ -45,7 +45,7 @@ body {
 .nav-links a { text-decoration: none; color: var(--text-main); transition: var(--transition); font-weight: 500; }
 .nav-links a:hover { color: var(--primary); }
 
-.burger { display: none; cursor: pointer; }
+.burger { display: none; cursor: pointer; z-index: 1100; }
 .burger div { width: 25px; height: 3px; background: white; margin: 5px; transition: var(--transition); }
 
 /* --- HERO SECTION --- */
@@ -76,7 +76,7 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
 .secondary { border: 1px solid var(--primary); color: var(--primary); }
 .secondary:hover { background: rgba(56, 189, 248, 0.1); }
 
-/* --- PRÉSENTATION & BILAN --- */
+/* --- PRÉSENTATION & CONTENEURS --- */
 .container { padding: 100px 5% 40px; max-width: 1100px; margin: auto; }
 .section-title { font-size: 2rem; color: var(--primary); margin-bottom: 3rem; position: relative; }
 .section-title::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 50px; height: 4px; background: var(--primary); }
@@ -84,14 +84,14 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
 .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; }
 .profile-pic { width: 100%; max-width: 250px; border-radius: 20px; border: 3px solid var(--primary); }
 
-/* --- CARDS (PROJETS, SKILLS, LANGUES) --- */
-.skills-wrapper, .projects-grid, .lang-grid { 
+/* --- GRILLES (SKILLS & LANGUES) --- */
+.skills-wrapper, .lang-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 20px; 
 }
 
-.skill-box, .card, .lang-card { 
+.skill-box, .lang-card { 
     background: var(--card-bg); 
     padding: 25px; 
     border-radius: 12px; 
@@ -99,24 +99,90 @@ h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
     transition: var(--transition); 
 }
 
-/* ANIMATION AU SURVOL */
-.skill-box:hover, .card:hover, .lang-card:hover {
+.skill-box:hover, .lang-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.card.featured { grid-column: 1 / -1; border-color: rgba(56, 189, 248, 0.5); }
+/* --- NOUVEAU DESIGN DES CARDS PROJETS --- */
+.projects-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 25px; 
+}
+
+.card { 
+    background: var(--card-bg); 
+    padding: 25px; 
+    border-radius: 16px; 
+    border: 1px solid #1e293b; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Aligne le bouton en bas */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* CARTE MISE EN AVANT (WORKSHOP) */
+.card.featured { 
+    grid-column: 1 / -1; 
+    border: 1px solid rgba(56, 189, 248, 0.4); 
+    background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Petit ruban pour le top projet */
+.card.featured::before {
+    content: 'TOP PROJECT';
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: var(--primary);
+    color: var(--dark);
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+}
 
 /* ÉLÉMENTS INTERNES DES CARTES */
+.card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-main); }
+.card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 15px; }
+
+.card-highlight {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--primary);
+    margin-top: 10px;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px 0;
+    font-size: 0.85rem;
+}
+
+.card-details i { color: var(--primary); margin-right: 8px; }
+
 .icons-list { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px; }
 .icon-item { text-align: center; width: 65px; }
 .icon-item i { font-size: 2.2rem; display: block; margin-bottom: 5px; color: var(--text-main); }
 .icon-item i.fas { color: var(--primary); }
 
-.project-tag { background: var(--primary); color: var(--dark); font-size: 0.7rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; }
-.rank { background: #fbbf24; color: #000; font-size: 0.7rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; margin-left: 10px; }
-.tech-pills span { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; margin: 5px; display: inline-block; }
+.project-tag { background: var(--primary); color: var(--dark); font-size: 0.7rem; font-weight: bold; padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 5px; }
+.rank { background: #fbbf24; color: #000; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; }
+
+.tech-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.tech-pills span { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; border: 1px solid rgba(56, 189, 248, 0.2); }
 
 .btn-link { 
     color: var(--primary); 
@@ -146,7 +212,7 @@ footer { background: #010409; padding: 60px 0 20px; text-align: center; }
 .footer-content a { color: var(--primary); text-decoration: none; }
 hr { border: none; border-top: 1px solid #1e293b; margin: 30px auto; width: 50%; }
 
-/* --- ANIMATIONS (REVEAL & MOBILE) --- */
+/* --- ANIMATIONS & RESPONSIVE --- */
 .reveal-hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal-visible { opacity: 1; transform: translateY(0); }
 
@@ -167,7 +233,7 @@ hr { border: none; border-top: 1px solid #1e293b; margin: 30px auto; width: 50%;
     .card.featured { grid-column: auto; }
 }
 
-/* ÉTAT ANIMÉ DU BURGER (X) */
+/* BURGER ANIMATION */
 .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
 .toggle .line2 { opacity: 0; }
 .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
